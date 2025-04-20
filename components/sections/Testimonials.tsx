@@ -12,12 +12,6 @@ const Testimonials = () => {
       role: "High School Math Teacher",
       image: "https://cdn.shopify.com/s/files/1/0259/7876/5396/files/Sal_Khan_Academy.jpg?v=1625681059", // This will be a fallback if image doesn't exist
     },
-    {
-      quote: "Khan Academy has transformed how I teach. My students are more engaged and take ownership of their learning.",
-      name: "Michael Rodriguez",
-      role: "Middle School Science Teacher",
-      image: "https://cdn.shopify.com/s/files/1/0259/7876/5396/files/Sal_Khan_Academy.jpg?v=1625681059",
-    },
   ];
 
   const studentTestimonials = [
@@ -45,7 +39,7 @@ const Testimonials = () => {
       </motion.h2>
 
       {/* Teacher Testimonials */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+      <div className="grid grid-cols-1  gap-8 mb-16">
         {teacherTestimonials.map((testimonial, index) => (
           <motion.div 
             key={testimonial.name}

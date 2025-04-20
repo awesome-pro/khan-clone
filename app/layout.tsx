@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Poppins } from "next/font/google";
+import { Inter, Merriweather, Montserrat, Poppins } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "../components/theme-provider";
 import React from "react";
@@ -19,6 +19,13 @@ const inter = Inter({
   display: "swap",
 });
 
+const merriweather = Merriweather({
+  variable: "--font-merriweather",
+  subsets: ["latin"],
+  weight: ["700", "900"],
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   title: "Khan Academy | Free Online Courses, Lessons & Practice",
   description: "For every student, every classroom. Real results. Khan Academy is a nonprofit with the mission of providing a free, world-class education for anyone, anywhere.",
@@ -33,7 +40,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className={`${poppins.variable} ${inter.variable} antialiased`}
+        className={`${merriweather.variable} ${inter.variable} antialiased`}
       >
         <ThemeProvider
             attribute="class"

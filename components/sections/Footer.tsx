@@ -3,6 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 const Footer = () => {
   const footerSections = [
@@ -115,7 +116,7 @@ const Footer = () => {
         <div className="border-t border-gray-200 pt-8 flex flex-col md:flex-row justify-between items-center">
           <div className="mb-6 md:mb-0">
             <Link href="/" className="flex items-center">
-              <span className="text-xl font-bold text-[#1865f2]">Khan Academy</span>
+              <Image src="/khan.png" alt="Khan Academy Logo" width={200} height={40} />
             </Link>
             <p className="text-sm text-gray-500 mt-2">
               A nonprofit organization with the mission of providing a free, world-class education for anyone, anywhere.

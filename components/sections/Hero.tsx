@@ -106,7 +106,7 @@ const Hero = () => {
               variants={itemVariants}
             >
               <Button 
-                className="bg-[#1865f2] hover:bg-[#0d4fd6] text-white px-6 py-2 rounded-md"
+                className="bg-[#1865f2] hover:bg-[#0d4fd6] text-white px-6 py-2 rounded-xl"
                 asChild
               >
                 <Link href="/learners">
@@ -115,7 +115,7 @@ const Hero = () => {
               </Button>
               
               <Button 
-                className="bg-[#1aa260] hover:bg-[#158f53] text-white px-6 py-2 rounded-md"
+                className="bg-[#1aa260] hover:bg-[#158f53] text-white px-6 py-2 rounded-xl"
                 asChild
               >
                 <Link href="/teachers">
@@ -125,7 +125,7 @@ const Hero = () => {
               
               <Button 
                 variant="outline"
-                className="border-[#0a2a66] text-[#0a2a66] hover:bg-gray-100 px-6 py-2 rounded-md"
+                className="border-[#0a2a66] text-[#0a2a66] hover:bg-gray-100 px-6 py-2 rounded-xl"
                 asChild
               >
                 <Link href="/parents">

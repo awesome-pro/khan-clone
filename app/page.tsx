@@ -8,6 +8,7 @@ import Testimonials from '@/components/sections/Testimonials'
 import Donation from '@/components/sections/Donation'
 import Join from '@/components/sections/Join'
 import Footer from '@/components/sections/Footer'
+import Sponsors from '@/components/sections/Sponsors'
 
 export default function Home() {
   return (
@@ -21,6 +22,7 @@ export default function Home() {
         <Testimonials />
         <Donation />
         <Join />
+        <Sponsors />
         <Footer />
       </div>
     </main>
