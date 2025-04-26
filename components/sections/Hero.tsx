@@ -106,7 +106,7 @@ const Hero = () => {
               variants={itemVariants}
             >
               <Button 
-                className="bg-[#1865f2] hover:bg-[#0d4fd6] text-white px-6 py-2 rounded-xl"
+                className="bg-[#1865f2] hover:bg-[#0d4fd6] text-white px-6 py-2 rounded-lg"
                 asChild
               >
                 <Link href="/learners">
@@ -115,7 +115,7 @@ const Hero = () => {
               </Button>
               
               <Button 
-                className="bg-[#1aa260] hover:bg-[#158f53] text-white px-6 py-2 rounded-xl"
+                className="bg-[#1aa260] hover:bg-[#158f53] text-white px-6 py-2 rounded-lg"
                 asChild
               >
                 <Link href="/teachers">
@@ -125,7 +125,7 @@ const Hero = () => {
               
               <Button 
                 variant="outline"
-                className="border-[#0a2a66] text-[#0a2a66] hover:bg-gray-100 px-6 py-2 rounded-xl"
+                className="border-[#0a2a66] text-[#0a2a66] hover:bg-gray-100 px-6 py-2 rounded-lg"
                 asChild
               >
                 <Link href="/parents">
@@ -150,7 +150,7 @@ const Hero = () => {
                 height={300}
                 src="https://cdn.kastatic.org/images/lohp/hero_student_collage_IN_2x.png" 
                 alt="Student learning on Khan Academy" 
-                className="rounded-xl w-full h-auto object-cover shadow-md"
+                className="rounded-lg w-full h-auto object-cover shadow-md"
               />
             </div>
           </motion.div>

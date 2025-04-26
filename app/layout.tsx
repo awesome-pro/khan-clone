@@ -3,6 +3,8 @@ import { Inter, Merriweather, Montserrat, Poppins } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "../components/theme-provider";
 import React from "react";
+import { SearchProvider } from "@/components/search/SearchContext";
+import { SearchDialog } from "@/components/search/SearchDialog";
 
 // Using Poppins as a substitute for Kievit since Kievit is not available in Google Fonts
 const poppins = Poppins({
@@ -48,7 +50,10 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            {children}
+            <SearchProvider>
+              {children}
+              <SearchDialog />
+            </SearchProvider>
         </ThemeProvider>
       </body>
     </html>

@@ -10,7 +10,7 @@ const Donation = () => {
   return (
     <div className="container mx-auto px-4 py-16">
       <div className="max-w-5xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-20 items-center">
           {/* Left side - Content */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}

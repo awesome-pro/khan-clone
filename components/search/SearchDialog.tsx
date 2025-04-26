@@ -1,18 +1,17 @@
 "use client";
 
 import * as React from "react";
-import { DialogProps } from "@radix-ui/react-dialog";
 import { Command as CommandPrimitive } from "cmdk";
 import { Search, Loader2 } from "lucide-react";
 import { 
   Dialog, 
   DialogContent, 
   DialogHeader, 
-  DialogTitle,
-  DialogTrigger 
+  DialogTitle
 } from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { useSearch } from "@/components/search/SearchContext";
 
 // Mock search results data
 const mockSearchResults = [
@@ -96,12 +95,19 @@ const categoryColors = {
   Resources: "bg-purple-100 text-purple-800",
 };
 
-export function SearchDialog({ ...props }: DialogProps) {
-  const [open, setOpen] = React.useState(false);
+export function SearchDialog() {
+  const { isOpen, setIsOpen } = useSearch();
   const [query, setQuery] = React.useState("");
   const [isSearching, setIsSearching] = React.useState(false);
   const [results, setResults] = React.useState(mockSearchResults);
   const commandRef = React.useRef<HTMLDivElement>(null);
+  
+  // Reset query when dialog closes
+  React.useEffect(() => {
+    if (!isOpen) {
+      setQuery("");
+    }
+  }, [isOpen]);
   
   // Filter results based on search query
   React.useEffect(() => {
@@ -122,29 +128,13 @@ export function SearchDialog({ ...props }: DialogProps) {
       );
       setResults(filtered);
       setIsSearching(false);
-    }, 500);
+    }, 300);
     
     return () => clearTimeout(timer);
   }, [query]);
   
-  // Handle keyboard shortcuts
-  React.useEffect(() => {
-    const down = (e: KeyboardEvent) => {
-      if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
-        e.preventDefault();
-        setOpen(open => !open);
-      }
-    };
-    
-    document.addEventListener("keydown", down);
-    return () => document.removeEventListener("keydown", down);
-  }, []);
-  
   return (
-    <Dialog open={open} onOpenChange={setOpen} {...props}>
-      <DialogTrigger asChild>
-        {props.children}
-      </DialogTrigger>
+    <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogContent className="sm:max-w-[550px] p-0 overflow-hidden border-none shadow-xl rounded-xl">
         <DialogHeader className="px-4 pt-4 pb-0">
           <DialogTitle className="sr-only">Search Khan Academy</DialogTitle>
@@ -180,7 +170,7 @@ export function SearchDialog({ ...props }: DialogProps) {
                     className="flex flex-col px-4 py-3 rounded-lg cursor-pointer hover:bg-blue-50 transition-colors"
                     onSelect={() => {
                       window.location.href = result.href;
-                      setOpen(false);
+                      setIsOpen(false);
                     }}
                   >
                     <div className="flex items-center justify-between flex-wrap gap-2">
@@ -231,20 +221,24 @@ export function SearchDialog({ ...props }: DialogProps) {
   );
 }
 
-export function SearchButton() {
+export function SearchButton({ className }: { className?: string }) {
+  const { toggleSearch } = useSearch();
+  
   return (
-    <SearchDialog>
-      <Button
-        variant="outline"
-        className="relative h-9 w-full justify-start rounded-full bg-white/80 hover:bg-white text-sm text-[#0a2a66] border-gray-200 shadow-sm transition-all sm:pr-12 md:w-40 lg:w-64"
-      >
-        <Search className="mr-2 h-4 w-4 shrink-0 text-gray-500" />
-        <span className="hidden lg:inline-flex">Search Khan Academy...</span>
-        <span className="inline-flex lg:hidden">Search...</span>
-        <kbd className="pointer-events-none absolute right-1.5 top-2 hidden h-5 select-none items-center gap-1 rounded border bg-gray-100 px-1.5 font-mono text-[10px] font-medium opacity-100 sm:flex">
-          <span className="text-xs">⌘</span>K
-        </kbd>
-      </Button>
-    </SearchDialog>
+    <Button
+      variant="outline"
+      className={cn(
+        "relative h-9 w-full justify-start rounded-full bg-white/80 hover:bg-white text-sm text-[#0a2a66] border-gray-200 shadow-sm transition-all sm:pr-12 md:w-40 lg:w-64",
+        className
+      )}
+      onClick={toggleSearch}
+    >
+      <Search className="mr-2 h-4 w-4 shrink-0 text-gray-500" />
+      <span className="hidden lg:inline-flex">Search Khan Academy...</span>
+      <span className="inline-flex lg:hidden">Search...</span>
+      <kbd className="pointer-events-none absolute right-1.5 top-2 hidden h-5 select-none items-center gap-1 rounded border bg-gray-100 px-1.5 font-mono text-[10px] font-medium opacity-100 sm:flex">
+        <span className="text-xs">⌘</span>K
+      </kbd>
+    </Button>
   );
 }

@@ -9,7 +9,8 @@ import { motion } from 'framer-motion';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { Input } from '@/components/ui/input';
 import Image from 'next/image';
-import { SearchDialog } from '@/components/search/SearchDialog';
+import { SearchButton } from '@/components/search/SearchDialog';
+import { useSearch } from '@/components/search/SearchContext';
 
 // Subject categories for the dropdown menu
 const subjectCategories = [
@@ -49,6 +50,7 @@ const subjectCategories = [
 
 export default function Header() {
   const [isSearchExpanded, setIsSearchExpanded] = useState(false);
+  const { toggleSearch } = useSearch();
 
   return (
     <header className="sticky top-0 z-50 bg-white/60 backdrop-blur-md text-white shadow-md">
@@ -133,7 +135,6 @@ export default function Header() {
                     {/* Header */}
                     <div className="bg-gradient-to-r from-[#1865f2]/10 to-[#1aa260]/10 p-4 border-b">
                       <h3 className="text-lg font-bold text-[#0a2a66]">Explore Khan Academy</h3>
-                      <p className="text-sm text-gray-600 mt-1">Find the perfect course for your learning journey</p>
                     </div>
                     
                     {/* Content */}
@@ -207,20 +208,7 @@ export default function Header() {
           
           {/* Search Bar */}
           <div className="hidden md:flex items-center relative">
-            <SearchDialog>
-              <Button
-                variant="outline"
-                className="relative h-9 w-full justify-start rounded-full text-[#0a2a66] border-gray-200 bg-white/80 hover:bg-white text-sm shadow-sm sm:pr-12 md:w-40 lg:w-64 transition-all"
-                onClick={() => {}}
-              >
-                <Search className="mr-2 h-4 w-4 shrink-0 text-gray-500" />
-                <span className="hidden lg:inline-flex">Search Khan Academy...</span>
-                <span className="inline-flex lg:hidden">Search...</span>
-                <kbd className="pointer-events-none absolute right-1.5 top-2 hidden h-5 select-none items-center gap-1 rounded border bg-gray-100 px-1.5 font-mono text-[10px] font-medium opacity-100 sm:flex">
-                  <span className="text-xs">⌘</span>K
-                </kbd>
-              </Button>
-            </SearchDialog>
+          <SearchButton />
           </div>
           
           {/* Right Side Controls */}
@@ -240,11 +228,14 @@ export default function Header() {
             </Button>
             
             <div className="ml-1 md:hidden">
-              <SearchDialog>
-                <Button variant="ghost" size="icon" className="text-[#0a2a66] hover:bg-gray-100 h-8 w-8 sm:h-9 sm:w-9">
-                  <Search className="w-4 h-4 sm:w-5 sm:h-5" />
-                </Button>
-              </SearchDialog>
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              className="text-[#0a2a66] hover:bg-gray-100 h-8 w-8 sm:h-9 sm:w-9"
+              onClick={toggleSearch}
+            >
+              <Search className="w-4 h-4 sm:w-5 sm:h-5" />
+            </Button>
             </div>
           </div>
         </div>

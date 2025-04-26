@@ -9,6 +9,9 @@ import Donation from '@/components/sections/Donation'
 import Join from '@/components/sections/Join'
 import Footer from '@/components/sections/Footer'
 import Sponsors from '@/components/sections/Sponsors'
+import Anjali from '@/components/sections/anjali'
+import Teachers from '@/components/sections/Teachers'
+import LearnAnything from '@/components/sections/anything'
 
 export default function Home() {
   return (
@@ -19,7 +22,9 @@ export default function Home() {
         <UserPath />
         <SubjectCategories />
         <ValueProposition />
-        <Testimonials />
+        <Teachers />
+        <LearnAnything />
+        <Anjali />
         <Donation />
         <Join />
         <Sponsors />
