@@ -4,7 +4,6 @@ import Hero from '@/components/sections/Hero'
 import UserPath from '@/components/sections/UserPath'
 import SubjectCategories from '@/components/sections/SubjectCategories'
 import ValueProposition from '@/components/sections/ValueProposition'
-import Testimonials from '@/components/sections/Testimonials'
 import Donation from '@/components/sections/Donation'
 import Join from '@/components/sections/Join'
 import Footer from '@/components/sections/Footer'
@@ -12,6 +11,7 @@ import Sponsors from '@/components/sections/Sponsors'
 import Anjali from '@/components/sections/anjali'
 import Teachers from '@/components/sections/Teachers'
 import LearnAnything from '@/components/sections/anything'
+import FAQ from '@/components/sections/FAQ'
 
 export default function Home() {
   return (
@@ -28,6 +28,7 @@ export default function Home() {
         <Donation />
         <Join />
         <Sponsors />
+        <FAQ />
         <Footer />
       </div>
     </main>
